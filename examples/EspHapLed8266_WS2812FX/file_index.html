@@ -1,0 +1,103 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RGB web portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+</head>
+
+<body>
+  <section class="main">
+    <div class="d-flex p-2 align-items-center">
+      <div class="p-2 ">
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">State On/Off</label>
+        </div>
+      </div>
+      <div class="p-2 ">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    </div>
+    <div class="d-flex p-2 ">
+      <div class="p-2 ">
+        <div id="brigtness"></div>
+      </div>
+      <div class="p-2 ">
+        <div id="color"></div>
+      </div>
+    </div>
+  </section>
+  <script>
+
+    var brigtnessPicker = new iro.ColorPicker('#brigtness', {
+      layoutDirection: 'horizontal',
+      layout: [{
+        component: iro.ui.Slider,
+        options: {
+          sliderType: 'value',
+        }
+      }]
+    });
+
+    brigtnessPicker.on('color:change', function(color) {
+      console.log(color.value);
+    });
+
+    var colorPicker = new iro.ColorPicker('#color', {
+      wheelLightness: true,
+      layoutDirection: 'horizontal',
+      layout: [{
+          component: iro.ui.Wheel,
+          options: {}
+        },
+        {
+          component: iro.ui.Slider,
+          options: {
+            sliderType: 'hue'
+          }
+        },
+        {
+          component: iro.ui.Slider,
+          options: {
+            sliderType: 'saturation'
+          }
+        },
+      ]
+    });
+
+    colorPicker.on('color:change', function(color) {
+      // log the current color as a HEX string
+      console.log(color.hexString);
+    });
+
+
+    //   var baseHost = 'http://192.168.0.115';
+    //     const query = `${baseHost}/set?var=${el.id}&val=${value}`;
+    //     console.log(query);
+    //     fetch(query, {'mode': 'no-cors'}).then((response) => {
+    //       console.log(
+    //         `request to ${query} finished, status: ${response.status}`
+    //       );
+    //     });
+
+    //   function updateColor(pos, color) {
+    //     var hexColor = rgbToHex(color);
+    //
+    //     var intcolor = parseInt("0x" + hexColor);
+    //     const querycolor = `${baseHost}/set?var=col&val=${intcolor}`;
+    //
+    //     fetch(querycolor, {'mode': 'no-cors'}).then((response) => {});
+    //   }
+  </script>
+</body>
+
+</html>
