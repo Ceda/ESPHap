@@ -2,6 +2,7 @@
  * color_helpers.h
  *
  */
+#include <ArduinoJson.h>
 
 #ifndef API_H_
 #define API_H_
@@ -32,53 +33,50 @@ void notifyRGB()
 
 void handleGetVal()
 {
-  server.send(200, FPSTR(TEXT_PLAIN), DeviceData.IsOn ? "1" : "0");
+  DynamicJsonDocument res(1024);
+
+  res["isOn"] = DeviceData.IsOn;
+  res["brigthness"] = DeviceData.Brigthness;
+  res["speed"] = DeviceData.Speed;
+  res["mode"] = DeviceData.Mode;
+  res["hue"] = DeviceData.Hue;
+  res["saturation"] = DeviceData.Saturation;
+
+  char response[1024];
+  serializeJson(res, response);
+  server.send(200, "application/json", response);
 }
 
 void handleSetVal()
 {
-  if (server.args() != 2)
-  {
-    server.send(505, FPSTR(TEXT_PLAIN), "Bad args");
-    return;
-  }
-  //to do analyze
-  bool isSucess = false;
-  if (server.arg("var") == "ch1")
-  {
+  DynamicJsonDocument req(1024);
+  deserializeJson(req, server.arg("plain"));
 
-    DeviceData.IsOn = (server.arg("val") == "true");
-    Serial.println("Web SetOn");
-    set_strip();
-    notifyRGB();
-    isSucess = true;
-  }
-  else if (server.arg("var") == "br")
-  {
-    DeviceData.Brigthness = server.arg("val").toInt();
+  boolean IsOn = req["isOn"];
+  int Brigthness = req["brigthness"];
+  int Speed = req["speed"];
+  int Mode = req["mode"];
+  float Hue = req["hue"];
+  float Saturation = req["saturation"];
 
-    notifyRGB();
-    set_strip();
-    isSucess = true;
-  }
-  else if (server.arg("var") == "col")
-  {
-    // Serial.println("Web Set Color");
-    uint32_t color = server.arg("val").toInt();
-    double Hue;
-    double Saturation;
-    double Intensity;
-    ColorToHSI(color, (float)DeviceData.Brigthness, Hue, Saturation, Intensity);
-    DeviceData.Saturation = Saturation;
-    DeviceData.Hue = Hue;
-    notifyRGB();
-    set_strip();
-    isSucess = true;
-  }
-  if (isSucess)
-    server.send(200, FPSTR(TEXT_PLAIN), "OK");
-  else
-    server.send(505, FPSTR(TEXT_PLAIN), "Bad args");
+  DeviceData.IsOn = IsOn;
+  DeviceData.Brigthness = Brigthness;
+  DeviceData.Speed = Speed;
+  DeviceData.Mode = Mode;
+  DeviceData.Hue = Hue;
+  DeviceData.Saturation = Saturation;
+
+  notifyRGB();
+  set_strip();
+
+  DynamicJsonDocument res(1024);
+
+  res["success"] = true;
+  res["message"] = "State updated.";
+
+  char response[1024];
+  serializeJson(res, response);
+  server.send(200, "application/json", response);
 }
 
 #endif /* API_H_ */
