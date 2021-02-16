@@ -77,6 +77,8 @@ type name() { \
 	homekit_service_t* hap_add_relaydim_service(const char* szname, hap_callback cb, void* context);
 	homekit_service_t* hap_add_temperature_service(const char* szname);
 
+	homekit_service_t* hap_add_rgbstrip_fx_service(const char* szname, hap_callback cb, void* context);
+
 	homekit_service_t* hap_add_thermostat_service(const char* szname, hap_callback cb, void* context);
 	homekit_service_t* hap_add_thermostat_service_as_accessory(int acctype, const char* szname, hap_callback cb, void* context);
 	homekit_service_t* hap_new_thermostat_service(const char* szname, hap_callback cb, void* context);
@@ -93,12 +95,12 @@ type name() { \
 
 	homekit_service_t* hap_add_battery_service(const char* szname, hap_callback cb, void* context);
 	homekit_service_t* hap_new_battery_service(const char* szname, hap_callback cb, void* context);
-	
+
 	//switch
 	homekit_service_t* hap_add_switch_service(const char* szname, hap_callback cb, void* context);
 	homekit_service_t* hap_new_switch_service(const char* szname, hap_callback cb, void* context);
 	homekit_service_t* hap_new_switch_service_as_accessory(const char* szname, hap_callback cb, void* context);
-	
+
 	//button
 	homekit_service_t* hap_add_button_service(const char* szname);// , hap_callback cb, void* context);
 	homekit_service_t* hap_new_button_service(const char* szname);// , hap_callback cb, void* context);
@@ -167,7 +169,7 @@ type name() { \
 	bool hap_homekit_is_paired();
 	void hap_restart_server();
 
-	
+
 #endif
 	void hap_init_homekit_base_accessory();
 
@@ -182,4 +184,3 @@ type name() { \
 	int set_wifi_max_power();
 	int set_wifi_save_power_middle(void);
 	int set_wifi_save_power(int8_t level);
-	

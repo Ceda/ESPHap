@@ -33,7 +33,7 @@
 
 /**
  Defines information about a certain accessory, including a action to identify the accessory.
- 
+
  Required Characteristics:
  - IDENTIFY
  - MANUFACTURER
@@ -41,7 +41,7 @@
  - NAME
  - SERIAL_NUMBER
  - FIRMWARE_REVISION
- 
+
  Optional Characteristics:
  - HARDWARE_REVISION
  - ACCESSORY_FLAGS
@@ -50,10 +50,10 @@
 
 /**
  Defines that the accessory constains a fan. For more features see FAN2.
- 
+
  Required Characteristics:
  - ON
- 
+
  Optional Characteristics:
  - NAME
  - ROTATION_DIRECTION
@@ -68,7 +68,7 @@
  - CURRENT_DOOR_STATE
  - TARGET_DOOR_STATE
  - OBSTRUCTION_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - LOCK_CURRENT_STATE
@@ -81,7 +81,7 @@
 
  Required Characteristics:
  - ON
- 
+
  Optional Characteristics:
  - NAME
  - BRIGHTNESS
@@ -93,11 +93,11 @@
 
 /**
  Defines a number of additional settings, rules and information on a lock mechanism inside of a accessory.
- 
+
  Required Characteristics:
  - LOCK_CONTROL_POINT
  - VERSION
- 
+
  Optional Characteristics:
  - NAME
  - LOGS
@@ -112,11 +112,11 @@
 
 /**
  Defines that the accessory constains a lock mechanism. This can be combined with Lock Management.
- 
+
  Required Characteristics:
  - LOCK_CURRENT_STATE
  - LOCK_TARGET_STATE
- 
+
  Optional Characteristics:
  - NAME
  */
@@ -124,11 +124,11 @@
 
 /**
  Defines that the accessory contains an outlet/socket.
- 
+
  Required Characteristics:
  - ON
  - OUTLET_IN_USE
- 
+
  Optional Characteristics:
  - NAME
  */
@@ -136,10 +136,10 @@
 
 /**
  Defines that the accessory contains a switch.
- 
+
  Required Characteristics:
  - ON
- 
+
  Optional Characteristics:
  - NAME
  */
@@ -154,7 +154,7 @@
  - CURRENT_TEMPERATURE
  - TARGET_TEMPERATURE
  - TEMPERATURE_DISPLAY_UNITS
- 
+
  Optional Characteristics:
  - NAME
  - CURRENT_RELATIVE_HUMIDITY
@@ -169,7 +169,7 @@
 
  Required Characteristics:
  - AIR_QUALITY
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -189,11 +189,11 @@
 
 /**
  Defines that the accessory contains a security system.
- 
+
  Required Characteristics:
  - SECURITY_SYSTEM_CURRENT_STATE
  - SECURITY_SYSTEM_TARGET_STATE
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_FAULT
@@ -204,10 +204,10 @@
 
 /**
  Defines that the accessory contains a monoxide dioxide (CO) sensor.
- 
+
  Required Characteristics:
  - CARBON_MONOXIDE_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -224,7 +224,7 @@
 
  Required Characteristics:
  - CONTACT_SENSOR_STATE
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -236,12 +236,12 @@
 
 /**
  Defines that the accessory contains or controls a door.
- 
+
  Required Characteristics:
  - CURRENT_POSITION
  - TARGET_POSITION
  - POSITION_STATE
- 
+
  Optional Characteristics:
  - NAME
  - HOLD_POSITION
@@ -254,7 +254,7 @@
 
  Required Characteristics:
  - CURRENT_RELATIVE_HUMIDITY
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -266,10 +266,10 @@
 
 /**
  Defines that the accessory contains a (water) leak sensor.
- 
+
  Required Characteristics:
  - LEAK_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -281,10 +281,10 @@
 
 /**
  Defines that the accessory contains a light sensor.
- 
+
  Required Characteristics:
  - CURRENT_AMBIENT_LIGHT_LEVEL
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -296,10 +296,10 @@
 
 /**
  Defines that the accessory contains a motion sensor.
- 
+
  Required Characteristics:
  - MOTION_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -311,10 +311,10 @@
 
 /**
  Defines that the accessory contains a occupancy sensor.
- 
+
  Required Characteristics:
  - OCCUPANCY_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -326,10 +326,10 @@
 
 /**
  Defines that the accessory contains a smoke sensor.
- 
+
  Required Characteristics:
  - SMOKE_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -344,7 +344,7 @@
 
  Required Characteristics:
  - PROGRAMMABLE_SWITCH_EVENT
- 
+
  Optional Characteristics:
  - NAME
  - SERVICE_LABEL_INDEX
@@ -353,10 +353,10 @@
 
 /**
  Defines that the accessory contains a temperature sensor.
- 
+
  Required Characteristics:
  - CURRENT_TEMPERATURE
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -373,7 +373,7 @@
  - CURRENT_POSITION
  - TARGET_POSITION
  - POSITION_STATE
- 
+
  Optional Characteristics:
  - NAME
  - HOLD_POSITION
@@ -383,12 +383,12 @@
 
 /**
  Defines that the accessory constains a window covering such as a blind or curtain.
- 
+
  Required Characteristics:
  - CURRENT_POSITION
  - TARGET_POSITION
  - POSITION_STATE
- 
+
  Optional Characteristics:
  - NAME
  - HOLD_POSITION
@@ -402,12 +402,12 @@
 
 /**
  Defines that the accessory contains a battery that can be monitored.
- 
+
  Required Characteristics:
  - BATTERY_LEVEL
  - CHARGING_STATE
  - STATUS_LOW_BATTERY
- 
+
  Optional Characteristics:
  - NAME
  */
@@ -418,7 +418,7 @@
 
  Required Characteristics:
  - CARBON_DIOXIDE_DETECTED
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_ACTIVE
@@ -432,7 +432,7 @@
 
 /**
  Defines that the accessory allows for the management of a RTP (video) stream. This is mostly used for video doorbells and cameras and may not work standalone.
- 
+
  Required Characteristics:
  - SUPPORTED_VIDEO_STREAM_CONFIGURATION
  - SUPPORTED_AUDIO_STREAM_CONFIGURATION
@@ -440,7 +440,7 @@
  - SELECTED_RTPS_CONFIGURATION
  - STREAMING_STATUS
  - SETUP_ENDPOINTS
- 
+
  Optional Characteristics:
  - NAME
  - VOLUME
@@ -449,10 +449,10 @@
 
 /**
  Defines that the accessory contains a microphone. This is mostly used for video doorbells and cameras and may not work standalone.
- 
+
  Required Characteristics:
  - MUTE
- 
+
  Optional Characteristics:
  - NAME
  - VOLUME
@@ -464,7 +464,7 @@
 
  Required Characteristics:
  - MUTE
- 
+
  Optional Characteristics:
  - NAME
  - VOLUME
@@ -476,7 +476,7 @@
 
  Required Characteristics:
  - PROGRAMMABLE_SWITCH_EVENT
- 
+
  Optional Characteristics:
  - NAME
  - BRIGHTNESS
@@ -486,10 +486,10 @@
 
 /**
  Defines that the accessory contains a fan that implements version 2 of the fan features.
- 
+
  Required Characteristics:
  - ACTIVE
- 
+
  Optional Characteristics:
  - NAME
  - CURRENT_FAN_STATE
@@ -507,7 +507,7 @@
  Required Characteristics:
  - SLAT_TYPE
  - CURRENT_SLAT_STATE
- 
+
  Optional Characteristics:
  - NAME
  - CURRENT_TILT_ANGLE
@@ -518,10 +518,10 @@
 
 /**
  Defines that the accessory contains a filter that can notify the user of needing maintenace.
- 
+
  Required Characteristics:
  - FILTER_CHANGE_INDICATION
- 
+
  Optional Characteristics:
  - NAME
  - FILTER_LIFE_LEVEL
@@ -531,12 +531,12 @@
 
 /**
  Defines that the accessory contains a air purifier.
- 
+
  Required Characteristics:
  - ACTIVE
  - CURRENT_AIR_PURIFIER_STATE
  - TARGET_AIR_PURIFIER_STATE
- 
+
  Optional Characteristics:
  - NAME
  - SWING_MODE
@@ -551,7 +551,7 @@
  Required Characteristics:
  - ACTIVE
  - SERVICE_LABEL_NAMESPACE
- 
+
  Optional Characteristics:
  - NAME
  */
@@ -559,10 +559,10 @@
 
 /**
  Defines that the accessory contains a faucet.
- 
+
  Required Characteristics:
  - ACTIVE
- 
+
  Optional Characteristics:
  - NAME
  - STATUS_FAULT
@@ -571,12 +571,12 @@
 
 /**
  Defines that the accessory supports the control of a irrigation system.
- 
+
  Required Characteristics:
  - ACTIVE
  - PROGRAM_MODE
  - IN_USE
- 
+
  Optional Characteristics:
  - NAME
  - REMAINING_DURATION
@@ -586,12 +586,12 @@
 
 /**
  Defines that the accessory contains a (water) valve.
- 
+
  Required Characteristics:
  - ACTIVE
  - IN_USE
  - VALVE_TYPE
- 
+
  Optional Characteristics:
  - NAME
  - SET_DURATION
@@ -604,17 +604,17 @@
 
 /**
  Defines that the accessory contains a heater and/or cooler.
- 
+
  Accessory Category:
  - 20: Heaters
  - 21: Air Conditioners
- 
+
  Required Characteristics:
  - ACTIVE
  - CURRENT_TEMPERATURE
  - CURRENT_HEATER_COOLER_STATE
  - TARGET_HEATER_COOLER_STATE
- 
+
  Optional Characteristics:
  - NAME
  - ROTATION_SPEED
@@ -628,17 +628,17 @@
 
 /**
  Defines that the accessory contains a humidifier and/or dehumidifier.
- 
+
  Accessory Category:
  - 22: Humidifiers
  - 23: Dehumidifiers
- 
+
  Required Characteristics:
  - ACTIVE
  - CURRENT_RELATIVE_HUMIDITY
  - CURRENT_HUMIDIFIER_DEHUMIDIFIER_STATE
  - TARGET_HUMIDIFIER_DEHUMIDIFIER_STATE
- 
+
  Optional Characteristics:
  - NAME
  - RELATIVE_HUMIDITY_DEHUMIDIFIER_THRESHOLD
@@ -701,6 +701,8 @@
  - VOLUME_SELECTOR
  - NAME
  */
+#define HOMEKIT_SERVICE_TELEVISION_SPEAKER HOMEKIT_APPLE_UUID3("113")
+
 #define HOMEKIT_SERVICE_TELEVISION_SPEAKER HOMEKIT_APPLE_UUID3("113")
 
 // MARK: - Characteristics
@@ -2693,6 +2695,34 @@
         .count = 2, \
         .values = (uint8_t[]) { 0, 1 }, \
     }, \
+    ##__VA_ARGS__
+
+// FX
+#define HOMEKIT_CHARACTERISTIC_FX_MODE  "1C52000A-457C-4D3C-AABA-E6F207422A10"  // 121  => S2W2
+#define HOMEKIT_CHARACTERISTIC_FX_SPEED "4CB2534E-9C95-4C4F-A746-36238BAACE3A"  // 121  => S2W2
+
+#define HOMEKIT_DECLARE_CHARACTERISTIC_FX_MODE(_value, ...) \
+    .type = HOMEKIT_CHARACTERISTIC_FX_MODE, \
+    .description = "fxMode", \
+    .format = homekit_format_int, \
+    .permissions = homekit_permissions_paired_read \
+                 | homekit_permissions_paired_write, \
+    .min_value = (float[]) {0}, \
+    .max_value = (float[]) {54}, \
+    .min_step = (float[]) {1}, \
+    .value = HOMEKIT_INT_(_value), \
+    ##__VA_ARGS__
+
+#define HOMEKIT_DECLARE_CHARACTERISTIC_FX_SPEED(_value, ...) \
+    .type = HOMEKIT_CHARACTERISTIC_FX_SPEED, \
+    .description = "fxSpeed", \
+    .format = homekit_format_int, \
+    .permissions = homekit_permissions_paired_read \
+                 | homekit_permissions_paired_write, \
+    .min_value = (float[]) {100}, \
+    .max_value = (float[]) {5000}, \
+    .min_step = (float[]) {100}, \
+    .value = HOMEKIT_INT_(_value), \
     ##__VA_ARGS__
 
 #endif // __HOMEKIT_CHARACTERISTICS__

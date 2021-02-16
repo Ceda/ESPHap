@@ -167,10 +167,10 @@ void on_wifi_ready() {
 
 callback_storagechanged get_callback_storage_change() {
 	return callbackstorage_integration;
-		
+
 }
 void set_callback_storage_change(callback_storagechanged fn){
-	
+
 	callbackstorage_integration =fn;
 	//INFO("set_callback_storage_change %d ", (long)callbackstorage_integration);
 }
@@ -207,7 +207,7 @@ void hap_init_homekit_server() {
 		 paired = homekit_is_paired();
 		 INFO("homekit_is_paired %d",paired);
 		// INFO("callbackstorage_integration 0x%x ", callbackstorage_integration);
-		 
+
 		 if(base_accessory_index==-1){
 			 hap_init_homekit_base_accessory();
 		 }else{
@@ -219,7 +219,7 @@ void hap_init_homekit_server() {
 			// old->services = 0;  // do not destruct services
 			 //homekit_accessory_free(old,false);
 			 //TO DO  memory leak
-			 //Need release  homekit_accessory_t * old  
+			 //Need release  homekit_accessory_t * old
 		 }
 
 
@@ -239,7 +239,7 @@ void hap_restart_server() {
 bool hap_setup_final_step() {
 	if (hap_mainservices_current > 1) {
 		set_callback_storage(on_storage_changed);
-		
+
 		//INFO("homekit_is_paired %d", paired);
 		if (base_accessory_index == -1) {
 			hap_init_homekit_base_accessory();
@@ -253,7 +253,7 @@ bool hap_setup_final_step() {
 			 old->services = 0;  // do not destruct services
 			homekit_accessory_free(old,false);
 			 //TO DO  memory leak
-			 //Need release  homekit_accessory_t * old  
+			 //Need release  homekit_accessory_t * old
 			return true;
 		}
 
@@ -372,6 +372,7 @@ homekit_service_t*  hap_add_lightbulb_service_as_accessory(int acctype,const cha
  //   INFO("added light bulb as accessory , next accessory %d",hap_mainaccesories_current);
 return lbservice;
 }
+
 homekit_service_t* hap_add_rgbstrip_service(const char* szname,hap_callback cb,void* context){
 
 	homekit_service_t*service = hap_new_rgbstrip_service(szname, cb, context);
@@ -487,7 +488,7 @@ homekit_service_t* hap_add_thermostat_service(const char* szname, hap_callback c
 homekit_service_t* hap_add_thermostat_service_as_accessory(int acctype, const char* szname, hap_callback cb, void* context) //hap_add_htermostat_service_as_accessory
 {
 	homekit_service_t* baseservice = hap_new_homekit_accessory_service(szname, "0");
-	homekit_service_t* thermoservice = hap_new_thermostat_service(szname, cb, context); 
+	homekit_service_t* thermoservice = hap_new_thermostat_service(szname, cb, context);
 	homekit_service_t* svc[3];
 	svc[0] = baseservice;
 	svc[1] = thermoservice;
@@ -656,7 +657,7 @@ homekit_service_t*  hap_add_light_service_as_accessory(int acctype, const char* 
 
 	homekit_service_t* baseservice = hap_new_homekit_accessory_service(szname, "0");
 	homekit_service_t* lightservice = hap_new_light_service(szname, cb, context);
-	
+
 	homekit_service_t* svc[3];
 	svc[0] = baseservice;
 	svc[1] = lightservice;
@@ -668,7 +669,7 @@ homekit_service_t*  hap_add_light_service_as_accessory(int acctype, const char* 
 
 	hap_mainaccesories_current++;
 	hap_accessories[hap_mainaccesories_current] = NULL;
-	
+
 	return lightservice;
 }
 homekit_service_t* hap_new_battery_service(const char* szname, hap_callback cb, void* context) {
@@ -851,8 +852,8 @@ homekit_service_t* hap_add_windowcovering_as_accessory(int acctype, const char* 
 	return windowcovering_service;
 }
 homekit_characteristic_t* hap_add_hold_characteristik_to_windowcovering(homekit_service_t* s, hap_callback cb, void* context) {
-	
-	return homekit_add_characteristic_to_service(s, 
+
+	return homekit_add_characteristic_to_service(s,
 		NEW_HOMEKIT_CHARACTERISTIC(HOLD_POSITION, false,
 			.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
 				cb, .context = context
@@ -1087,7 +1088,7 @@ homekit_service_t* hap_add_elgatosupport_service(const char* szname, hap_callbac
 				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
 				cb, .context = context)
 			),
-			NEW_HOMEKIT_CHARACTERISTIC(ELGATO_HISTORY_REQUEST,0, 
+			NEW_HOMEKIT_CHARACTERISTIC(ELGATO_HISTORY_REQUEST,0,
 				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
 				cb, .context = context),
 				),
@@ -1099,6 +1100,48 @@ homekit_service_t* hap_add_elgatosupport_service(const char* szname, hap_callbac
 				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
 				cb, .context = context)
 				),
+			NULL
+	});
+
+	return hap_add_service(service);
+}
+
+homekit_service_t* hap_add_rgbstrip_fx_service(const char* szname, hap_callback cb,void* context){
+
+	homekit_service_t*service = NEW_HOMEKIT_SERVICE(LIGHTBULB, .primary = true, .characteristics = (homekit_characteristic_t*[]) {
+		NEW_HOMEKIT_CHARACTERISTIC(NAME, szname),
+			NEW_HOMEKIT_CHARACTERISTIC(ON, true,
+				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
+					cb, .context = context
+				)
+			),
+
+			NEW_HOMEKIT_CHARACTERISTIC(BRIGHTNESS, 100,
+				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
+					cb, .context = context
+				)
+			),
+
+			NEW_HOMEKIT_CHARACTERISTIC(HUE, 0,
+				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
+					cb, .context = context
+				)
+			),
+			NEW_HOMEKIT_CHARACTERISTIC(SATURATION, 0,
+				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
+					cb, .context = context
+				)
+			),
+			NEW_HOMEKIT_CHARACTERISTIC(FX_SPEED, 2000,
+				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
+					cb, .context = context
+				)
+			),
+			NEW_HOMEKIT_CHARACTERISTIC(FX_MODE, 1,
+				.callback = HOMEKIT_CHARACTERISTIC_CALLBACK(
+					cb, .context = context
+				)
+			),
 			NULL
 	});
 
